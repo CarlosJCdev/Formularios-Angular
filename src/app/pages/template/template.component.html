@@ -1,0 +1,44 @@
+<h4>Formularios <small> Temaplate </small></h4>
+<hr>
+<form autocomplete="off" (ngSubmit)="guardar(form)" #form="ngForm">
+
+    <div>
+
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Nombre</label>
+            <div class="col-8">
+                <small *ngIf="nombre.invalid && nombre.touched" class="text-danger form-text">Ingrese minimo 5 letras</small>
+                <input class="form-control" type="text" name="nombre" [class.is-invalid]="nombre.invalid && nombre.touched" #nombre="ngModel" [ngModel]="usuario.nombre" required minlength="5" placeholder="Nombre">
+
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Apellido</label>
+            <div class="col-8">
+                <small *ngIf="apellido.invalid && apellido.touched" class="text-danger form-text">Ingrese minimo 5 letras</small>
+                <input class="form-control" [class.is-invalid]="apellido.invalid && apellido.touched" type="text" required minlength="5" name="apellido" #apellido="ngModel" [ngModel]="usuario.apellido" placeholder="Apellido">
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-2 col-form-label">Correo</label>
+        <div class="col-8">
+            <small *ngIf="correo.invalid && correo.touched" class="text-danger form-text">Ingrese un formato de correo valido</small>
+            <input class="form-control" [class.is-invalid]="correo.invalid && correo.touched" [ngModel]="usuario.correo" name="correo" #correo="ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" type="email" required minlength="5" placeholder="Correo electrónico">
+        </div>
+    </div>
+
+
+
+    <div class="form-group row">
+        <label class="col-2 col-form-label">&nbsp;</label>
+        <div class="input-group col-md-8">
+            <button type="submit" class="btn btn-outline-primary btn-block">
+        Guardar
+      </button>
+        </div>
+    </div>
+
+</form>
